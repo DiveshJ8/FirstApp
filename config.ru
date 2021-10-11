@@ -1,3 +1,3 @@
 
 require './app'
-run Sinatra::HangpersonApp
+run HangpersonApp
