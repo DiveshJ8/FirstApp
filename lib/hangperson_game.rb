@@ -1,12 +1,4 @@
 class HangpersonGame
-
-  # add the necessary class methods, attributes, etc. here
-  # to make the tests in spec/hangperson_game_spec.rb pass.
-
-  # Get a word from remote "random word" service
-
-  # def initialize()
-  # end
   
   attr_accessor :word, :guesses, :wrong_guesses
   
@@ -16,7 +8,6 @@ class HangpersonGame
     @wrong_guesses = '' 
   end
   
-  # displays the formatted word after guesses have been made
   def word_with_guesses
     result = ''
     @word.split('').each do |char|
@@ -40,25 +31,19 @@ class HangpersonGame
     end
   end
   
-  # make a guess as to what the word is
   def guess(letter)
-    # make sure the letter is actually a letter
     if letter == nil || !(letter.class == String && letter =~ /^[A-z]$/i)
       raise ArgumentError
     end
     
-    # handle different cases
     letter.downcase!
     
-    # handle repeated guesses
     if @guesses.include?(letter) || @wrong_guesses.include?(letter)
       return false
     end
     
-    #handle case where guess is not a letter
     return false if letter.length != 1
     
-    # finally handle check and return true
     if @word.include? letter
       @guesses << letter
     else
